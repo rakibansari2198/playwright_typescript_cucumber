@@ -13,3 +13,4 @@ Feature: User Authentication
       | Admin    | admin123 | User is locked out     |
       | Admin    | admin123 | Dashboard            |
       | Admin    | admin123   | Invalid credentials  |
+      | Admin    | admin123   | Invalid credential  |
