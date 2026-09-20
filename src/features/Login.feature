@@ -1,16 +1,16 @@
-Feature: User Authentication
+Feature: Login functionality
 
-  @smoke @login
-  Scenario Outline: Validate login functionality with multiple users
-    Given the user navigates to the login page
-    When the user enters username "<username>" and password "<password>"
-    And clicks the login button
-    Then the user should see "<expected_result>"
+  @loginWithExcelData
+  Scenario: Login with valid credentials using data from Excel sheet
+    Given user read login data for test case  
+    When user login using Excel credentials
+
+  @loginWithoutExcelData
+  Scenario Outline: Login with valid credentials without using Excel sheet
+    When user login with "<username>" and "<password>"
 
     Examples:
-      | username        | password     | expected_result      |
-      | Admin    | admin123 | Dashboard            |
-      | Admin    | admin123 | User is locked out     |
-      | Admin    | admin123 | Dashboard            |
-      | Admin    | admin123   | Invalid credentials  |
-      | Admin    | admin123   | Invalid credent  |
+      | username | password |
+      | Admin    | admin123 |
+      | Admin    | admin123 |
+      | Admin    | admin123 |

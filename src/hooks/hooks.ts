@@ -1,20 +1,12 @@
-import {
-  Before,
-  After,
-  BeforeAll,
-  AfterAll,
-  Status,
-  setDefaultTimeout
-} from '@cucumber/cucumber';
-
+import { Before,After,BeforeAll,AfterAll,Status } from '@cucumber/cucumber';
 import { BrowserManager } from '../config/BrowserManager';
 import { CustomWorld } from '../hooks/world';
+import { setDefaultTimeout } from '@cucumber/cucumber';
 
-setDefaultTimeout(60000);
+export const browserManager = new BrowserManager();
+setDefaultTimeout(90 * 1000); 
 
-const browserManager = new BrowserManager();
-
-BeforeAll(async () => {
+BeforeAll(async function () {
   await browserManager.launchBrowser();
 });
 
@@ -23,6 +15,15 @@ Before(async function (this: CustomWorld) {
 
   this.context = context;
   this.page = page;
+
+  // Page objects
+  await this.initializePages();
+
+  // Database
+  await  this.initializeDatabase();
+
+  // Excel Utility
+  await this.initializeExcelUtility('src/testData/TestData.xlsx');
 });
 
 After(async function (this: CustomWorld, { result, pickle }) {
@@ -38,6 +39,7 @@ After(async function (this: CustomWorld, { result, pickle }) {
 
   await this.page.close();
   await this.context.close();
+  await this.db.closeConnection();
 });
 
 AfterAll(async () => {
