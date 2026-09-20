@@ -1,11 +1,4 @@
-import {
-  chromium,
-  firefox,
-  webkit,
-  Browser,
-  BrowserContext,
-  Page
-} from '@playwright/test';
+import {chromium,firefox,webkit,Browser,BrowserContext,Page} from '@playwright/test';
 
 export class BrowserManager {
 
@@ -49,7 +42,16 @@ export class BrowserManager {
     return { context, page };
   }
 
+  async getBrowser(): Promise<Browser> {
+
+        if (!this.browser) {
+            throw new Error('Browser is not launched.');
+        }
+        return this.browser;
+    }
+
   async closeBrowser(): Promise<void> {
     await this.browser.close();
   }
+  
 }
