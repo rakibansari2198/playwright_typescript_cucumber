@@ -6,6 +6,7 @@ Feature: Login functionality
     When user login using Excel credentials
 
 
+
   @loginWithoutExcelData
   Scenario Outline: Login with valid credentials without using Excel sheet
     When user login with "<username>" and "<password>"
