@@ -1,4 +1,4 @@
-import {chromium,firefox,webkit,Browser,BrowserContext,Page} from '@playwright/test';
+import {chromium, firefox, webkit, Browser, BrowserContext, Page} from '@playwright/test';
 
 export class BrowserManager {
 

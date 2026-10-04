@@ -1,12 +1,13 @@
-import mysql from "mysql2/promise";
+import { Client } from "pg";
 import { config } from "../config/config";
 
 export class DatabaseUtility {
 
-    private connection: mysql.Connection | null = null;
+    private connection: Client | null = null;
 
     async connect(): Promise<void> {
-        this.connection = await mysql.createConnection({
+
+        this.connection = new Client({
             host: config.dbHost,
             port: Number(config.dbPort),
             user: config.dbUser,
@@ -14,21 +15,26 @@ export class DatabaseUtility {
             database: config.dbName
         });
 
+        await this.connection.connect();
+
         console.log("Database connected successfully");
     }
 
-    async executeQuery(query: string,values: any[] = []): Promise<any[]> {
+    async executeQuery(
+        query: string,
+        values: any[] = []
+    ): Promise<any[]> {
 
         if (!this.connection) {
             throw new Error("Database connection is not established");
         }
 
-        const [rows] = await this.connection.execute(
+        const result = await this.connection.query(
             query,
             values
         );
 
-        return rows as any[];
+        return result.rows;
     }
 
     async closeConnection(): Promise<void> {
