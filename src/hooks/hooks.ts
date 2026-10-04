@@ -20,10 +20,10 @@ Before(async function (this: CustomWorld) {
   await this.initializePages();
 
   // Database
-  await  this.initializeDatabase();
+  // await  this.initializeDatabase();
 
   // Excel Utility
-  await this.initializeExcelUtility('src/testData/TestData.xlsx');
+  // await this.initializeExcelUtility('src/testData/users_test_data.xlsx');
 });
 
 After(async function (this: CustomWorld, { result, pickle }) {
@@ -39,7 +39,7 @@ After(async function (this: CustomWorld, { result, pickle }) {
 
   await this.page.close();
   await this.context.close();
-  await this.db.closeConnection();
+  // await this.db.closeConnection();
 });
 
 AfterAll(async () => {

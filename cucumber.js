@@ -14,6 +14,7 @@ module.exports = {
     paths: ['src/features/**/*.feature'],
     // parallel: 2,
     // retry: 1,
-    // publishQuiet: true
+    // publishQuiet: true,
+    tags: process.env.TAGS || ""
   }
 };

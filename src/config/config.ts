@@ -1,5 +1,4 @@
 import dotenv from "dotenv";
-
 dotenv.config({path: 'src/qa.env'});
 
 export const config = {
