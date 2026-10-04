@@ -12,14 +12,15 @@
     "chrome": "cross-env BROWSER=chromium HEADLESS=false cucumber-js",
     "firefox": "cross-env BROWSER=firefox HEADLESS=false cucumber-js",
     "webkit": "cross-env BROWSER=webkit HEADLESS=false cucumber-js",
-    "parallel-chrome": "cross-env BROWSER=chromium HEADLESS=true cucumber-js --parallel 4",
-    "parallel-firefox": "cross-env BROWSER=firefox HEADLESS=true cucumber-js --parallel 4",
-    "parallel-webkit": "cross-env BROWSER=webkit HEADLESS=true cucumber-js --parallel 4",
+    "parallel-chrome": "cross-env BROWSER=chromium HEADLESS=true cucumber-js --parallel 2",
+    "parallel-firefox": "cross-env BROWSER=firefox HEADLESS=true cucumber-js --parallel 2",
+    "parallel-webkit": "cross-env BROWSER=webkit HEADLESS=true cucumber-js --parallel 2",
     "cross-browser": "npm-run-all --parallel parallel-chrome parallel-firefox parallel-webkit",
-    "smoke": "cucumber-js --tags \"@smoke\"",
-    "regression": "cucumber-js --tags \"@regression\"",
+    "smoke": "cross-env HEADLESS=false cucumber-js --tags \"@smoke\"",
+    "regression": "cross-env HEADLESS=false cucumber-js --tags \"@regression\"",
     "report": "node report.js"
   },
+  
   "devDependencies": {
     "@cucumber/cucumber": "^10.9.0",
     "@playwright/test": "^1.42.0",

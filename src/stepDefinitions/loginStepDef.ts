@@ -3,10 +3,10 @@ import { LoginPage } from "../pages/LoginPage";
 import { CustomWorld } from "../hooks/world";
 import { browserManager } from '../hooks/hooks';
 
+
 Then(
     "user login using Excel credentials from {string}",
     async function (
-        this: CustomWorld,
         filePath: string
     ) {
 
@@ -52,5 +52,6 @@ Then(
 
 When("user login with {string} and {string}", async function (username: string, password: string) {
     await this.loginPage.login(username, password);
+    await this.loginPage.verifyLoginSuccess();
     await this.context.close();
 });
