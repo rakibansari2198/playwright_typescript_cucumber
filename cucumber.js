@@ -5,7 +5,8 @@ module.exports = {
       'src/hooks/**/*.ts'
     ],
     format: [
-      // 'progress-bar',
+      'progress',
+      'pretty',
       'summary',
       'json:src/reports/cucumber-report.json',
       'html:src/reports/cucumber-report.html'

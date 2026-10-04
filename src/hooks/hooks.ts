@@ -6,11 +6,14 @@ import { setDefaultTimeout } from '@cucumber/cucumber';
 export const browserManager = new BrowserManager();
 setDefaultTimeout(90 * 1000); 
 
+
 BeforeAll(async function () {
   await browserManager.launchBrowser();
 });
 
+
 Before(async function (this: CustomWorld) {
+  
   const { context, page } = await browserManager.createContext();
 
   this.context = context;

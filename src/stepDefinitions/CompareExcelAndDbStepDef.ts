@@ -1,7 +1,6 @@
 import { Given, When, Then } from "@cucumber/cucumber";
 import {expect} from "@playwright/test";
 
-
 Then("user compare the data from excel sheet with db table data", async function () {
     await this.initializeDatabase();
     await this.initializeExcelUtility('src/testData/users_test_data.xlsx');
