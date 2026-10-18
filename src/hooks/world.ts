@@ -1,17 +1,10 @@
-import {
-  World,
-  IWorldOptions,
-  setWorldConstructor
-} from '@cucumber/cucumber';
-
-import {
-  BrowserContext,
-  Page
-} from '@playwright/test';
+import { World, IWorldOptions, setWorldConstructor } from '@cucumber/cucumber';
+import { BrowserContext, Page } from '@playwright/test';
 import { LoginPage } from '../pages/LoginPage';
 import { DatabaseUtility } from '../utils/DatabaseUtility';
 import { ExcelUtility } from '../utils/ExcelUtility';
 import { Browser } from '@playwright/test';
+import { RegisterPage } from '../pages/RegisterPage';
 
 export class CustomWorld extends World {
 
@@ -21,7 +14,7 @@ export class CustomWorld extends World {
   loginPage!: LoginPage;
   db!: DatabaseUtility;
   excelUtility!: ExcelUtility; 
-  
+  registerPage!: RegisterPage;
 
   constructor(options: IWorldOptions) {
     super(options);
@@ -34,6 +27,7 @@ export class CustomWorld extends World {
 
    async initializePages() {
         this.loginPage = new LoginPage(this.page);
+        this.registerPage = new RegisterPage(this.page);
     }
 
     async initializeDatabase() {

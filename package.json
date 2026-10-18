@@ -4,7 +4,7 @@
   "description": "Enterprise-grade Playwright TypeScript Cucumber BDD Framework",
   "main": "index.js",
   "scripts": {
-    "test:tags": "cross-env HEADLESS=false TAGS=@loginWithoutExcelData cucumber-js",
+    "test:tags": "cross-env HEADLESS=false TAGS=@smoke cucumber-js",
     "test:Headless": "cross-env HEADLESS=true cucumber-js",
     "test:headed": "cross-env HEADLESS=false cucumber-js",
     "test:qa": "cross-env ENV=qa cucumber-js",

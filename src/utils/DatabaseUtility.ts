@@ -1,5 +1,5 @@
 import { Client } from "pg";
-import { config } from "../config/config";
+import { DBConfig } from "../config/DBConfig";
 
 export class DatabaseUtility {
 
@@ -8,11 +8,11 @@ export class DatabaseUtility {
     async connect(): Promise<void> {
 
         this.connection = new Client({
-            host: config.dbHost,
-            port: Number(config.dbPort),
-            user: config.dbUser,
-            password: config.dbPassword,
-            database: config.dbName
+            host: DBConfig.dbHost,
+            port: Number(DBConfig.dbPort),
+            user: DBConfig.dbUser,
+            password: DBConfig.dbPassword,
+            database: DBConfig.dbName
         });
 
         await this.connection.connect();
