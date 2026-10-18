@@ -3,3 +3,6 @@ src/reports/screenshots
 src/reports/html-report
 src/reports/cucumber-report.html
 src/reports/cucumber-report.json
+
+# IntelliJ IDEA
+.idea/
