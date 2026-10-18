@@ -1,10 +1,10 @@
 import dotenv from "dotenv";
-dotenv.config({path: 'src/qa.env'});
+
+const env = process.env.TEST_ENV || "qa";
+dotenv.config({path: 'src/env/' + env + '.env'});
 
 export const config = {
-    dbHost: process.env.DB_HOST,
-    dbPort: process.env.DB_PORT,
-    dbPassword: process.env.DB_PASSWORD,
-    dbName: process.env.DB_NAME,    
-    dbUser: process.env.DB_USER,
+    baseUrl: process.env.BASE_URL!,
+    loginPath: process.env.LOGIN_PATH!,
+    registerPath: process.env.REGISTER_PATH!
 };
