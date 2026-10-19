@@ -9,7 +9,7 @@ module.exports = {
       'pretty',
       'summary',
       'json:src/reports/cucumber-report.json',
-      'html:src/reports/cucumber-report.html'
+      'html:src/reports/cucumber-report.html' 
     ],
     requireModule: ['ts-node/register',"dotenv/config"],
     paths: ['src/features/**/*.feature'],

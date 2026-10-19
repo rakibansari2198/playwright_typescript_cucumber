@@ -5,6 +5,7 @@ import { DatabaseUtility } from '../utils/DatabaseUtility';
 import { ExcelUtility } from '../utils/ExcelUtility';
 import { Browser } from '@playwright/test';
 import { RegisterPage } from '../pages/RegisterPage';
+import { FilePage } from '../pages/FilePage';
 
 export class CustomWorld extends World {
 
@@ -15,6 +16,7 @@ export class CustomWorld extends World {
   db!: DatabaseUtility;
   excelUtility!: ExcelUtility; 
   registerPage!: RegisterPage;
+  filePage!: FilePage;
 
   constructor(options: IWorldOptions) {
     super(options);
@@ -28,6 +30,7 @@ export class CustomWorld extends World {
    async initializePages() {
         this.loginPage = new LoginPage(this.page);
         this.registerPage = new RegisterPage(this.page);
+        this.filePage = new FilePage(this.page);
     }
 
     async initializeDatabase() {
