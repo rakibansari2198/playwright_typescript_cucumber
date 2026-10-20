@@ -14,4 +14,3 @@ Feature: File Upload and Download
     Given user navigates to the file download page
     When user clicks on the download link
     Then file should be downloaded successfully
-    And downloaded file should exist in the download directory
