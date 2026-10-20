@@ -1,4 +1,4 @@
-import { Page, Locator, expect } from "@playwright/test";
+import { Page, Locator, expect, Download } from "@playwright/test";
 
 export class BasePage {
     constructor(protected page: Page) {}
@@ -68,4 +68,17 @@ export class BasePage {
     async goForward() {
         await this.page.goForward();
     }
+
+    async uploadSelectedFile(locator: Locator, filePath: string) {
+        await locator.setInputFiles(filePath);
+    }
+
+    async clicksOnDownloadLink(locator: Locator): Promise<Download> {
+        const [download] = await Promise.all([
+            this.page.waitForEvent('download'),
+            locator.click()
+        ]);
+        return download;
+    }
+
 }

@@ -9,17 +9,5 @@ export const fileConfig = {
     'src',
     'testData',
     'TestData.xlsx'
-  ),
-
-  downloadDirectory: path.join(
-    PROJECT_ROOT,
-    'test-results',
-    'downloads'
-  ),
-
-  reportDirectory: path.join(
-    PROJECT_ROOT,
-    'src',
-    'reports'
   )
 };
